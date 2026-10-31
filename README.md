@@ -8,6 +8,10 @@ A local-first web app for looking after your plants, tuned for homes and gardens
 - **Identify** – no AI. Pick the traits you can see (leaf shape, pattern, flower colour, habit, size, placement) and compare your own photo side by side with catalog photos. Everything stays on your device.
 - **Installable** – works as a Progressive Web App on phone and desktop; data is stored in the browser (IndexedDB). Export/import a JSON backup from Settings.
 
+## Live app
+
+https://marinaor.github.io/plant-care/ — open it on your phone and choose "Add to Home Screen" to install it. Every push to `main` redeploys it through GitHub Actions (`.github/workflows/deploy.yml`).
+
 ## Run it
 
 ```bash
