@@ -3,8 +3,10 @@ import { indoorA } from './plants/indoor-a'
 import { indoorB } from './plants/indoor-b'
 import { outdoorA } from './plants/outdoor-a'
 import { outdoorB } from './plants/outdoor-b'
+import { indoorC } from './plants/indoor-c'
+import { aromatic } from './plants/aromatic'
 
-export const plants: Plant[] = [...indoorA, ...indoorB, ...outdoorA, ...outdoorB].sort((a, b) =>
+export const plants: Plant[] = [...indoorA, ...indoorB, ...indoorC, ...outdoorA, ...outdoorB, ...aromatic].sort((a, b) =>
   a.commonName.localeCompare(b.commonName),
 )
 

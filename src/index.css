@@ -663,3 +663,180 @@ details.card summary {
 details.card > div {
   padding: 0 16px 14px;
 }
+
+/* Bottom sheets */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 16px 16px 0 0;
+  max-height: 90dvh;
+  overflow: auto;
+}
+
+/* Month calendar */
+.cal {
+  padding: 10px 10px 12px;
+}
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.cal-title {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.cal-title:hover {
+  background: var(--surface-2);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.cal-weekdays {
+  margin-bottom: 4px;
+}
+
+.cal-weekdays div {
+  text-align: center;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cal-cell {
+  aspect-ratio: 1 / 1.05;
+  border: 1px solid transparent;
+  background: var(--surface-2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 2px 4px;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.cal-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.cal-cell .num {
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.cal-cell.past .num {
+  color: var(--muted);
+}
+
+.cal-cell.today .num {
+  background: var(--primary);
+  color: #fff;
+}
+
+.cal-cell.selected {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.cal-cell .dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  min-height: 7px;
+  align-items: center;
+}
+
+.cal-cell .dots i,
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.cal-cell .dots i.ring {
+  box-shadow: 0 0 0 2px var(--danger);
+}
+
+.cal-cell .dots b {
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+
+.dot {
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.legend .chip {
+  gap: 6px;
+}
+
+.dayrow.projected {
+  opacity: 0.55;
+}
+
+.dayrow .pick {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+}
+
+.selection-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--nav-h) + 12px + env(safe-area-inset-bottom));
+  width: min(560px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  z-index: 15;
+}
+
+@media (max-width: 480px) {
+  .dayrow .actions {
+    flex-direction: column;
+  }
+  .dayrow .actions .btn {
+    padding: 4px 8px;
+    min-height: 28px;
+    font-size: 0.78rem;
+  }
+}

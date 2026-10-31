@@ -133,6 +133,18 @@ export async function markDone(reminder: Reminder, note?: string) {
   })
 }
 
+/** Move a reminder's next due date. Everything after it follows automatically from the interval. */
+export async function moveReminder(reminder: Reminder, isoDate: string) {
+  await db.reminders.update(reminder.id, { nextDue: isoDate })
+}
+
+/** Move several reminders onto the same day, e.g. to water everything on Sunday. */
+export async function moveReminders(ids: string[], isoDate: string) {
+  await db.transaction('rw', db.reminders, async () => {
+    for (const id of ids) await db.reminders.update(id, { nextDue: isoDate })
+  })
+}
+
 export async function snooze(reminder: Reminder, days = 1) {
   const base = Math.max(fromISODate(reminder.nextDue).getTime(), fromISODate(today()).getTime())
   await db.reminders.update(reminder.id, { nextDue: toISODate(addDays(new Date(base), days)) })

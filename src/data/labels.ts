@@ -115,6 +115,25 @@ export const taskLabel: Record<TaskType, string> = {
   'bring-inside': 'Bring inside',
 }
 
+/** One colour per activity, used for calendar dots and legends. */
+export const taskColor: Record<TaskType, string> = {
+  water: '#2f80ed',
+  fertilize: '#2fa84f',
+  repot: '#a0622d',
+  prune: '#d64545',
+  mist: '#22b8cf',
+  rotate: '#8e5bd9',
+  'check-pests': '#e8a317',
+  overwinter: '#6b7d8f',
+  mulch: '#8a5a2b',
+  deadhead: '#e0569a',
+  harvest: '#c9a227',
+  divide: '#6f42c1',
+  'wipe-leaves': '#1aa6b7',
+  'plant-out': '#4cbf5a',
+  'bring-inside': '#f07a2a',
+}
+
 export const taskIcon: Record<TaskType, string> = {
   water: '💧',
   fertilize: '🌱',

@@ -5,7 +5,7 @@ import { plants, searchPlants } from '../data/catalog'
 import { difficultyLabel, toxicityLabel } from '../data/labels'
 import type { Category } from '../data/types'
 
-type Filter = 'all' | Category | 'pet-safe' | 'edible' | 'easy'
+type Filter = 'all' | Category | 'pet-safe' | 'edible' | 'easy' | 'aromatic'
 
 export function CatalogPage() {
   const [q, setQ] = useState('')
@@ -17,6 +17,8 @@ export function CatalogPage() {
     if (filter === 'pet-safe') l = l.filter((p) => p.toxicity === 'non-toxic')
     if (filter === 'edible') l = l.filter((p) => p.traits.edible)
     if (filter === 'easy') l = l.filter((p) => p.difficulty === 'easy')
+    if (filter === 'aromatic')
+      l = l.filter((p) => p.tags?.some((t) => ['herb', 'aromatic', 'fragrant'].includes(t)))
     return searchPlants(q, l)
   }, [q, filter])
 
@@ -27,6 +29,7 @@ export function CatalogPage() {
     ['easy', 'Easy'],
     ['pet-safe', 'Pet safe'],
     ['edible', 'Edible'],
+    ['aromatic', 'Aromatic'],
   ]
 
   return (
