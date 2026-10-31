@@ -16,13 +16,13 @@ async function show(title: string, body: string) {
   try {
     const reg = await navigator.serviceWorker?.getRegistration()
     if (reg) {
-      await reg.showNotification(title, { body, icon: '/icon.svg', tag: 'plant-care-due' })
+      await reg.showNotification(title, { body, icon: `${import.meta.env.BASE_URL}icon.svg`, tag: 'plant-care-due' })
       return
     }
   } catch {
     /* fall through to plain Notification */
   }
-  new Notification(title, { body, icon: '/icon.svg', tag: 'plant-care-due' })
+  new Notification(title, { body, icon: `${import.meta.env.BASE_URL}icon.svg`, tag: 'plant-care-due' })
 }
 
 /**
